@@ -9,6 +9,9 @@ Win.Object.defineProperty = new Proxy(Win.Object.defineProperty, {
     if (typeof Args[1] === 'string' && Args[1] === 'isSupportedPlatform') {
       return Reflect.apply(Target, ThisArg, [Args[0], Args[1], { value: () => false, writable: false, enumerable: true, configurable: true }])
     }
+    if (typeof Args[1] === 'string' && Args[1] === 'isSupportedBrowser') {
+      return Reflect.apply(Target, ThisArg, [Args[0], Args[1], { value: () => true, writable: false, enumerable: true, configurable: true }])
+    }
     return Reflect.apply(Target, ThisArg, Args)
   }
 })
